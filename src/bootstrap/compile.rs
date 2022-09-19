@@ -1101,6 +1101,8 @@ impl Step for Sysroot {
         let compiler = self.compiler;
         let sysroot = if compiler.stage == 0 {
             builder.out.join(&compiler.host.triple).join("stage0-sysroot")
+        } else if compiler.stage == 1 {
+            builder.out.join(&compiler.host.triple).join("stage1-sysroot")
         } else {
             builder.out.join(&compiler.host.triple).join(format!("stage{}", compiler.stage))
         };
